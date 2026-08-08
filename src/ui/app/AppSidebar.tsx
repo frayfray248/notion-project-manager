@@ -16,9 +16,9 @@ import {
 } from "@/ui/components/sidebar"
 import { IconSubtask } from '@tabler/icons-react';
 
-export function AppSidebar({ projects } : { projects: Project[] }) {
+export function AppSidebar({ projects }: { projects: Project[] }) {
     return (
-        <Sidebar>
+        <Sidebar collapsible="none">
             <SidebarHeader>
                 <div className="flex gap-2">
                     <IconSubtask size={28} />
@@ -27,11 +27,32 @@ export function AppSidebar({ projects } : { projects: Project[] }) {
             </SidebarHeader>
             <SidebarContent>
                 <SidebarGroup>
+                    <SidebarGroupLabel>Tools</SidebarGroupLabel>
+                    <SidebarMenu>
+                        <SidebarMenuItem>
+                            <SidebarMenuButton asChild ><a href="/dashboard/inbox">Inbox</a></SidebarMenuButton>
+                        </SidebarMenuItem>
+                        <SidebarMenuItem>
+                            <SidebarMenuButton asChild>
+                                <a href="/dashboard/roadmap">Roadmap</a>
+                            </SidebarMenuButton>
+                        </SidebarMenuItem>
+                        <SidebarMenuItem>
+                            <SidebarMenuButton asChild>
+                                <a href="/dashboard/playbooks">Playbooks</a>
+                            </SidebarMenuButton>
+                        </SidebarMenuItem>
+                    </SidebarMenu>
+                </SidebarGroup>
+                <SidebarGroup />
+                <SidebarGroup>
                     <SidebarGroupLabel>Projects</SidebarGroupLabel>
                     <SidebarMenu>
                         {projects.map((project) => (
                             <SidebarMenuItem key={project.name}>
-                                <SidebarMenuButton>{project.name}</SidebarMenuButton>
+                                <SidebarMenuButton asChild>
+                                    <a href={`/dashboard/${project.name.toLowerCase().replace(/\s+/g, '-')}`}>{project.name}</a>
+                                </SidebarMenuButton>
                             </SidebarMenuItem>
                         ))}
                     </SidebarMenu>

@@ -6,7 +6,7 @@ import { TooltipProvider } from "@/ui/components/tooltip";
 import { SidebarProvider } from "@/ui/components/sidebar";
 import { AppSidebar } from "@/ui/app/AppSidebar";
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
+const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
